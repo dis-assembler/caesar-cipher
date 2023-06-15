@@ -89,7 +89,7 @@ int main() {
 			
 				case 0:
 			
-					 printf("hello\n");
+					 break;
 			
 				case 1: 
 					printf("INSERT TEXT TO ENCRYPT:\n");
