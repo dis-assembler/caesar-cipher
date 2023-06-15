@@ -8,6 +8,12 @@ void encryptText(const char plainText[], char encryptedText[], int shift) {
 
 	int lenght = strlen(plainText);
 
+	if (shift < 0) {
+	
+		shift = 26 - (-shift % 26);
+	
+	}
+
 	for (int i = 0; i < lenght; i++) {
 	
 		if (isalpha(plainText[i])) {
@@ -39,6 +45,13 @@ void decryptText(const char encryptedText[], char decryptedText[], int shift) {
 	
 	int lenght = strlen(encryptedText);
 	
+	if (shift < 0) {
+	
+		shift = 26 - (-shift % 26);
+	
+	}
+
+
 	for (int i = 0; i < lenght; i++){
 	
 		if (isalpha(encryptedText[i])) {
@@ -81,7 +94,7 @@ int main() {
 	FILE *TEXT;
 	
  		printf("CHOOSE AN OPTION:\n");
- 		printf("1. ENCRYPT\n2. DECRYPT\n");
+ 		printf("0. EXIT\n1. ENCRYPT\n2. DECRYPT\n");
 			scanf("%d", &chooser);
 			getchar();
 		
@@ -89,7 +102,9 @@ int main() {
 			
 				case 0:
 			
-					 break;
+					 printf("EXITING THE PROGRAM...");
+					 return 0;
+					 
 			
 				case 1: 
 					printf("INSERT TEXT TO ENCRYPT:\n");
@@ -117,18 +132,27 @@ int main() {
 					strcpy(outputText, decryptedText);
 				
 					break;
+					
+				default:
+				
+						printf("WRONG CHOICE,");
+						break;	
 		}
 			
 		
 		
 		printf("CHOOSE OUTPUT:\n");
-		printf("1. CONSOLE\n2. TEXT FILE\n");
+		printf("0. EXIT\n1. CONSOLE\n2. TEXT FILE\n");
 			scanf("%d", &chooser);
 			getchar();
 			
 			
 			switch (chooser) {
+				case 0:
 			
+					 printf("EXITING THE PROGRAM...");
+					 return 0;
+					
 				case 1: 
 					printf("%s\n", outputText);
 						break;
